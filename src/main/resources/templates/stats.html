@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'SmashStats - ' + ${fighterName}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link th:href="@{/css/bootstrap-4.2.1-dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body class="d-flex flex-column h-100">
+<div th:replace="fragments/menubar"></div>
+<main role="main" class="flex-shrink-0">
+    <div class="container">
+        <h1 class="mt-5" th:text="${fighterName}"></h1>
+        <p class="lead" th:text="'General matchup stats for ' + ${fighterName}"></p>
+        <p th:text="${fighterName} + ' has won ' + ${wins} + ' out of ' + ${totalGames} + ' games.'" />
+        <tr th:each="matchup: ${matchups}">
+            <td><p th:text="'Matchup - winner: ' + ${matchup.winner.name}
+             + ', opponent: ' + ${matchup.opponent.name}
+             + ', wins: ' + ${matchup.wins}
+             + ', losses: ' + ${matchup.losses}" /></td>
+        </tr>
+    </div>
+</main>
+<div th:replace="fragments/footer"></div>
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap-4.2.1-dist/js/bootstrap.min.js}"></script>
+</body>
+</html>
